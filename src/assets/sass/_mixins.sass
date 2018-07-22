@@ -1,2 +1,26 @@
-=box-sizing($box-model)
+=box-sizing($box-model: content-box)
   box-sizing: $box-model
+
+=element($element)
+  &__#{$element}
+    @content
+
+=modifier($modifier)
+  &--#{$modifier}
+    @content
+
+=push-auto()
+  margin-left: auto
+  margin-right: auto
+
+  // $style, $path, , $local
+=font-face($family, $path, $local, $style, $weight)
+  @font-face
+    font-family: $family
+    src: local($family), local($local), url($path) format('woff2')
+    font-style: $style
+    font-weight: $weight
+
+
+
+

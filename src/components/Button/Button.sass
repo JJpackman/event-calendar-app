@@ -1,0 +1,30 @@
+@import '../../assets/sass/_mixins.sass';
+@import '../../assets/sass/_variables.sass';
+
+.btn
+  border: none
+  color: $white
+  text-align: center
+  vertical-align: middle
+
+  +modifier('sm')
+    padding: 4px 8px
+
+  +modifier('md')
+    padding: 8px 16px
+
+  +modifier('lg')
+    padding: 16px 32px
+
+  +modifier('fluid')
+    min-width: 100%
+
+  +modifier('primary')
+    background-color: $dodge-blue
+
+  +modifier('success')
+    background-color: $medium-sea-green
+
+  +modifier('danger')
+    background-color: $crimson
+
