@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './Icon.css';
 
-export const SIZE = {
+const SIZE = {
   small: 'icon--sm',
   middle: 'icon--md',
   large: 'icon--lg'

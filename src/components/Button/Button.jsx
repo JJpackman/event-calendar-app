@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './Button.css';
 
-export const TYPES = {
+const TYPES = {
   primary: 'btn--primary',
   success: 'btn--success',
   danger: 'btn--danger'
@@ -20,7 +20,8 @@ const BaseButton = ({
   size,
   onPress,
   children,
-  disabled
+  disabled,
+  content
 }) => {
   const btnClass = classnames(
     styles.btn,
@@ -28,6 +29,8 @@ const BaseButton = ({
     styles[size],
     fluid && styles['btn--fluid']
   );
+
+  const btnContent = content && <span className={styles['btn__content']}>{content}</span>;
 
   return (
     <button
@@ -37,6 +40,9 @@ const BaseButton = ({
     >
       {
         children
+      }
+      {
+        btnContent
       }
     </button>
   );

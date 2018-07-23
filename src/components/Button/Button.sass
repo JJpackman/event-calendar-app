@@ -1,11 +1,17 @@
-@import '../../assets/sass/_mixins.sass';
-@import '../../assets/sass/_variables.sass';
+@import '../../assets/sass/_mixins.sass'
+@import '../../assets/sass/_variables.sass'
 
 .btn
   border: none
   color: $white
   text-align: center
   vertical-align: middle
+
+  +element('content')
+    font-weight: 700
+
+    *:not(.btn__content) ~ &
+      margin-left: 10px
 
   +modifier('sm')
     padding: 4px 8px
@@ -21,10 +27,13 @@
 
   +modifier('primary')
     background-color: $dodge-blue
+    color: $white
 
   +modifier('success')
     background-color: $medium-sea-green
+    color: $white
 
   +modifier('danger')
     background-color: $crimson
+    color: $white
 

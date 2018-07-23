@@ -9,7 +9,12 @@ class App extends Component {
     return (
       <div>
         <Header>
-          <Button.Primary>Add event</Button.Primary>
+          <Button.Primary content="Add event">
+            <Icon.Large name="search" />
+          </Button.Primary>
+          <Button.Danger>
+            <Icon.Large name="search" />
+          </Button.Danger>
           <TextField />
           <Icon.Middle name="search" />
         </Header>

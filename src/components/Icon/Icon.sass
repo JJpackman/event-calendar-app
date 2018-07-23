@@ -1,26 +1,22 @@
-@import '../../assets/sass/_mixins.sass';
+@import '../../assets/sass/_mixins.sass'
 
 .icon
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   +element('text')
     +visually-hidden()
 
-  /* sizes */
-  +modifier('sm')
-    &:before
-      width: 10px
-
-  +modifier('md')
-    &:before
-      width: 14px
-
-  +modifier('lg')
-    &:before
-      width: 18px
-
-  /* icon images */
+  /* icon views */
   +modifier('search')
     &:before
-      content: url('../../assets/img/search.svg')
-      display: inline-block
-      vertical-align: middle
-
+      content: '\e986'
