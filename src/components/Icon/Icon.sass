@@ -1,0 +1,26 @@
+@import '../../assets/sass/_mixins.sass';
+
+.icon
+  +element('text')
+    +visually-hidden()
+
+  /* sizes */
+  +modifier('sm')
+    &:before
+      width: 10px
+
+  +modifier('md')
+    &:before
+      width: 14px
+
+  +modifier('lg')
+    &:before
+      width: 18px
+
+  /* icon images */
+  +modifier('search')
+    &:before
+      content: url('../../assets/img/search.svg')
+      display: inline-block
+      vertical-align: middle
+
