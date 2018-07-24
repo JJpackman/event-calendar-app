@@ -4,8 +4,6 @@
 .btn
   border: none
   color: $white
-  text-align: center
-  vertical-align: middle
 
   +element('content')
     font-weight: 700
@@ -14,13 +12,22 @@
       margin-left: 10px
 
   +modifier('sm')
-    padding: 4px 8px
+    padding: 5px 12px
+
+    .btn__content
+      font-size: $base-font-size
 
   +modifier('md')
-    padding: 8px 16px
+    padding: 8px 18px
+
+    .btn__content
+      font-size: 18px
 
   +modifier('lg')
-    padding: 16px 32px
+    padding: 12px 24px
+
+    .btn__content
+      font-size: 22px
 
   +modifier('fluid')
     min-width: 100%

@@ -1,4 +1,5 @@
 @import '../../assets/sass/_mixins.sass'
+@import '../../assets/sass/_variables.sass'
 
 .icon
   /* use !important to prevent issues with browser extensions that change fonts */
@@ -16,7 +17,24 @@
   +element('text')
     +visually-hidden()
 
+  +modifier('sm')
+    font-size: 16px
+
+  +modifier('md')
+    font-size: 24px
+
+  +modifier('lg')
+    font-size: 32px
+
   /* icon views */
   +modifier('search')
     &:before
       content: '\e986'
+
+  +modifier('arrow-right')
+    &:before
+      content: '\ea3c'
+
+  +modifier('arrow-left')
+    &:before
+      content: '\ea40'
