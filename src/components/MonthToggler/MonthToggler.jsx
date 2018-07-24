@@ -1,14 +1,14 @@
 import React from 'react';
 import Pagination from '../Pagination/Pagination';
 import Container from '../Container/Container';
-import VerticalSpacing, { SIZE } from '../VerticalSpacing/VerticalSpacing';
+import * as Spacing from '../Spacing/Spacing';
 
 const MonthToggler = ({date, onNextMonth, onPrevMonth}) => (
-  <VerticalSpacing size={SIZE.large}>
+  <Spacing.Vertical size={Spacing.SIZE.large}>
     <Container>
       <Pagination content={date} onNext={onNextMonth} onPrev={onPrevMonth} />
     </Container>
-  </VerticalSpacing>
+  </Spacing.Vertical>
 );
 
 export default MonthToggler;
