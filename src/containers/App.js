@@ -5,9 +5,18 @@ import TextField from '../components/TextField/TextField';
 import * as Icon from '../components/Icon/Icon';
 import MonthToggler from '../components/MonthToggler/MonthToggler';
 import * as Spacing from '../components/Spacing/Spacing';
+import CalendarDay from '../components/CalendarDay/CalendarDay';
+import Container from '../components/Container/Container';
 
 class App extends Component {
   render() {
+    const currDate = new Date();
+    const event = {
+      date: currDate,
+      participants: ['Johny', 'Bill', 'Sandra'],
+      description: 'Birthday'
+    };
+
     return (
       <div>
         <Header>
@@ -17,7 +26,13 @@ class App extends Component {
           </Spacing.Horizontal>
           <TextField />
         </Header>
-        <MonthToggler date={new Date().toDateString()}/>
+        <MonthToggler date={currDate}/>
+        <Container>
+          <CalendarDay
+            date={currDate}
+            event={event}
+          />
+        </Container>
       </div>
     );
   }

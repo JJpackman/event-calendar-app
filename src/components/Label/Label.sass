@@ -1,0 +1,47 @@
+@import '../../assets/sass/_mixins.sass'
+@import '../../assets/sass/_variables.sass'
+
+.label
+  display: inline-block
+  min-height: 20px
+  padding: 2px 15px
+  margin-left: 12px
+  vertical-align: middle
+  background-color: #000000
+  color: $white
+
+  & *
+    font-size: 12px
+
+  +element('title')
+    font-weight: 400
+
+  +modifier('tag')
+    position: relative
+
+    &:before
+      content: ''
+      position: absolute
+      top: 50%
+      right: 100%
+      width: 15px
+      height: 15px
+      transform: translateY(-50%) translateX(50%) rotate(-45deg)
+      background-color: inherit
+
+    &:after
+      content: ''
+      position: absolute
+      top: 50%
+      left: 0
+      height: 5px
+      width: 5px
+      transform: translateY(-50%)
+      background-color: $white
+      border-radius: 50%
+
+
+
+
+
+

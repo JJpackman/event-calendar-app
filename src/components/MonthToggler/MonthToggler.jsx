@@ -6,7 +6,7 @@ import * as Spacing from '../Spacing/Spacing';
 const MonthToggler = ({date, onNextMonth, onPrevMonth}) => (
   <Spacing.Vertical size={Spacing.SIZE.large}>
     <Container>
-      <Pagination content={date} onNext={onNextMonth} onPrev={onPrevMonth} />
+      <Pagination content={date.toDateString()} onNext={onNextMonth} onPrev={onPrevMonth} />
     </Container>
   </Spacing.Vertical>
 );
