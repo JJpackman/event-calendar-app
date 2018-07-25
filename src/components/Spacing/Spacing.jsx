@@ -13,10 +13,10 @@ export const SIZE = {
   large: 'lg'
 };
 
-const Spacing = ({type, children, size, inline}) => (
+const Spacing = ({type, children, size, inline, direction}) => (
   <div className={classnames(
     styles['h-spacing'],
-    styles[`h-spacing--${type}-${size}`],
+    styles[`h-spacing--${type}-${size}-${direction}`],
     inline && styles['h-spacing--inline']
   )}>
     {children}
@@ -25,7 +25,8 @@ const Spacing = ({type, children, size, inline}) => (
 
 Spacing.defaultProps = {
   size: SIZE.small,
-  inline: false
+  inline: false,
+  direction: 'both'
 };
 
 export const Horizontal = props => (

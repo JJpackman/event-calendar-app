@@ -7,17 +7,17 @@
   padding: 2px 15px
   margin-left: 12px
   vertical-align: middle
-  background-color: #000000
-  color: $white
 
   & *
-    font-size: 12px
+    font-size: 12px !important
 
   +element('title')
     font-weight: 400
+    color: $dimgray
 
   +modifier('tag')
     position: relative
+    background-color: $thistle
 
     &:before
       content: ''
