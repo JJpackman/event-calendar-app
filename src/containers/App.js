@@ -42,6 +42,7 @@ class App extends Component {
               />
             }
             content="Simple event popup"
+            position="right-top"
           />
         </Container>
       </div>

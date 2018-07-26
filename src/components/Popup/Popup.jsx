@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import classnames from 'classnames';
+import classnames from 'classnames';
 import styles from './Popup.css';
 
 class Popup extends Component {
@@ -20,7 +20,7 @@ class Popup extends Component {
   }
 
   render() {
-    const {trigger, content} = this.props;
+    const {trigger, content, position} = this.props;
 
     return (
       <div className={styles['popup-container']}>
@@ -29,7 +29,10 @@ class Popup extends Component {
         </span>
         {
           this.state.isOpen &&
-          <div className={styles['popup-container__popup']}>
+          <div className={classnames(
+            styles['popup-container__popup'],
+            styles[`popup-container__popup--${position}`]
+          )}>
             {content}
           </div>
         }
@@ -37,5 +40,9 @@ class Popup extends Component {
     );
   }
 }
+
+Popup.defaultProps = {
+  position: 'bottom-left'
+};
 
 export default Popup;

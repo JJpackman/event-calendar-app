@@ -1,14 +1,31 @@
 @import '../../assets/sass/_variables.sass'
 @import '../../assets/sass/_mixins.sass'
 
+%bottom
+  bottom: -7px
+  transform: translateY(100%)
+
+%top
+  top: -7px
+  transform: translateY(-100%)
+
+%left
+  left: -5px
+  top: 0
+  transform: translateX(-100%)
+
+%right
+  right: -5px
+  top: 0
+  transform: translateX(100%)
+
 .popup-container
   display: inline-block
   position: relative
 
   +element('popup')
     position: absolute
-    bottom: -7px;
-    transform: translateY(100%);
+    min-height: 30px
     min-width: max-content
     padding: 10px 20px
     background-color: $white
@@ -20,12 +37,75 @@
     &:before
       content: ''
       position: absolute
-      top: 0
-      left: 5px
       width: 10px
       height: 10px
-      transform: translateX(50%) translateY(-50%) rotate(-135deg)
       background-color: $white
       z-index: 9998
       box-shadow: 1px 1px 0px 0px #bababc
+
+    +modifier('top-left')
+      @extend %top
+
+      &:before
+        bottom: 0
+        left: 5px
+        transform: translateX(50%) translateY(50%) rotate(45deg)
+
+    +modifier('top-right')
+      @extend %top
+      right: 0
+
+      &:before
+        bottom: 0
+        right: 5px
+        transform: translateX(-50%) translateY(50%) rotate(45deg)
+
+    +modifier('left-top')
+      @extend %left
+
+      &:before
+        top: 5px
+        right: 0
+        transform: translateX(50%) translateY(50%) rotate(-45deg)
+
+    +modifier('left-bottom')
+      @extend %left
+
+      &:before
+        bottom: 5px
+        right: 0
+        transform: translateX(50%) translateY(-50%) rotate(-45deg)
+
+    +modifier('right-top')
+      @extend %right
+
+      &:before
+        top: 5px
+        left: 0
+        transform: translateX(-50%) translateY(50%) rotate(135deg)
+
+    +modifier('right-bottom')
+      @extend %right
+
+      &:before
+        bottom: 5px
+        left: 0
+        transform: translateX(-50%) translateY(-50%) rotate(135deg)
+
+    +modifier('bottom-left')
+      @extend %bottom
+
+      &:before
+        top: 0
+        left: 5px
+        transform: translateX(50%) translateY(-50%) rotate(-135deg)
+
+    +modifier('bottom-right')
+      @extend %bottom
+      right: 0
+
+      &:before
+        top: 0
+        right: 5px
+        transform: translateX(-50%) translateY(-50%) rotate(-135deg)
 
