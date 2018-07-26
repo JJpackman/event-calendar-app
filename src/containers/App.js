@@ -7,6 +7,7 @@ import MonthToggler from '../components/MonthToggler/MonthToggler';
 import * as Spacing from '../components/Spacing/Spacing';
 import CalendarDay from '../components/CalendarDay/CalendarDay';
 import Container from '../components/Container/Container';
+import Popup from '../components/Popup/Popup';
 
 class App extends Component {
   render() {
@@ -20,7 +21,12 @@ class App extends Component {
     return (
       <div>
         <Header>
-          <Button.Primary content="Add event" />
+          <Popup
+            trigger={
+              <Button.Primary content="Add event" />
+            }
+            content="Simple popup text"
+          />
           <Spacing.Horizontal size={Spacing.SIZE.middle} inline={true}>
             <Icon.Small name="search" />
           </Spacing.Horizontal>
@@ -28,9 +34,14 @@ class App extends Component {
         </Header>
         <MonthToggler date={currDate}/>
         <Container>
-          <CalendarDay
-            date={currDate}
-            event={event}
+          <Popup
+            trigger={
+              <CalendarDay
+              date={currDate}
+              event={event}
+              />
+            }
+            content="Simple event popup"
           />
         </Container>
       </div>
