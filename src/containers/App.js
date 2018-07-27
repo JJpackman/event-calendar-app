@@ -8,6 +8,7 @@ import * as Spacing from '../components/Spacing/Spacing';
 import CalendarDay from '../components/CalendarDay/CalendarDay';
 import Container from '../components/Container/Container';
 import Popup from '../components/Popup/Popup';
+import EventFormShort from '../components/EventFormShort/EventFormShort';
 
 class App extends Component {
   render() {
@@ -25,7 +26,7 @@ class App extends Component {
             trigger={
               <Button.Primary content="Add event" />
             }
-            content="Simple popup text"
+            content={<EventFormShort onAdd={() => console.log('Added')} />}
           />
           <Spacing.Horizontal size={Spacing.SIZE.middle} inline={true}>
             <Icon.Small name="search" />
@@ -41,7 +42,7 @@ class App extends Component {
               event={event}
               />
             }
-            content="Simple event popup"
+            content={<EventFormShort onAdd={() => console.log('Added')} />}
             position="right-top"
           />
         </Container>

@@ -14,6 +14,12 @@ export const SIZES = {
   lg: 'btn--lg'
 };
 
+const BUTTON_ACTIONS = {
+  reset: 'reset',
+  submit: 'submit',
+  button: 'button'
+};
+
 const BaseButton = ({
   buttonType,
   fluid,
@@ -21,7 +27,8 @@ const BaseButton = ({
   onPress,
   children,
   disabled,
-  content
+  content,
+  btnAction
 }) => {
   const btnClass = classnames(
     styles.btn,
@@ -37,6 +44,7 @@ const BaseButton = ({
       className={btnClass}
       onClick={onPress}
       disabled={disabled}
+      type={btnAction}
     >
       {
         children
@@ -49,7 +57,8 @@ const BaseButton = ({
 };
 
 BaseButton.defaultProps = {
-  size: SIZES.sm
+  size: SIZES.sm,
+  btnAction: BUTTON_ACTIONS.button
 };
 
 export const Primary = props => (

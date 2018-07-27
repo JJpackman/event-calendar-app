@@ -34,12 +34,14 @@ class TextField extends Component {
     const {
       placeholder,
       disabled,
-      name
+      name,
+      id
     } = this.props;
 
     return (
       <input
         type="text"
+        id={id}
         name={name}
         value={this.state.text}
         onChange={this.handleChange}

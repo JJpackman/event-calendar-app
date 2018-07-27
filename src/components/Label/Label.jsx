@@ -16,9 +16,5 @@ const Label = ({title, children, type}) => (
   </div>
 );
 
-Label.defaultProps = {
-  tag: TYPE.tag
-};
-
 export default Label;
 
