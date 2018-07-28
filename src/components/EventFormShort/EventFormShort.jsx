@@ -3,6 +3,7 @@ import TextField from '../TextField/TextField';
 import * as Button from '../Button/Button';
 import * as Spacing from '../Spacing/Spacing';
 import Label from '../Label/Label';
+import Row from '../Row/Row';
 
 class EventFormShort extends Component {
   constructor() {
@@ -26,15 +27,15 @@ class EventFormShort extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <Spacing.Vertical size={Spacing.SIZE.middle}>
+        <Spacing.Vertical size={Spacing.SIZE.middle} direction="bottom">
           <Spacing.Vertical size={Spacing.SIZE.small} direction="bottom">
             <label htmlFor="e-form-short-field-date">
               <Label title="Date: " />
             </label>
           </Spacing.Vertical>
-          <div>
+          <Row>
             <TextField id="e-form-short-field-date" name="date" placeholder="19.05.2018" />
-          </div>
+          </Row>
         </Spacing.Vertical>
         <Spacing.Vertical size={Spacing.SIZE.middle} direction="bottom">
           <Spacing.Vertical size={Spacing.SIZE.small} direction="bottom">
@@ -42,9 +43,9 @@ class EventFormShort extends Component {
               <Label title="Description: " />
             </label>
           </Spacing.Vertical>
-          <div>
+          <Row>
             <TextField id="e-form-short-field-description" name="description" placeholder="Birthday"/>
-          </div>
+          </Row>
         </Spacing.Vertical>
         <Button.Primary fluid={true} content="Add event" btnAction="submit" />
       </form>

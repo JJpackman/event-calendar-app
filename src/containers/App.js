@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import Header from '../components/Header/Header';
-import * as Button from '../components/Button/Button';
-import TextField from '../components/TextField/TextField';
-import * as Icon from '../components/Icon/Icon';
 import MonthToggler from '../components/MonthToggler/MonthToggler';
-import * as Spacing from '../components/Spacing/Spacing';
 import CalendarDay from '../components/CalendarDay/CalendarDay';
 import Container from '../components/Container/Container';
 import Popup from '../components/Popup/Popup';
-import EventFormShort from '../components/EventFormShort/EventFormShort';
+import CalendarHeader from '../components/CalendarHeader/CalendarHeader';
 
 class App extends Component {
   render() {
@@ -21,19 +16,8 @@ class App extends Component {
 
     return (
       <div>
-        <Header>
-          <Popup
-            trigger={
-              <Button.Primary content="Add event" />
-            }
-            content={<EventFormShort onAdd={() => console.log('Added')} />}
-          />
-          <Spacing.Horizontal size={Spacing.SIZE.middle} inline={true}>
-            <Icon.Small name="search" />
-          </Spacing.Horizontal>
-          <TextField />
-        </Header>
-        <MonthToggler date={currDate}/>
+        <CalendarHeader />
+        <MonthToggler date={currDate} />
         <Container>
           <Popup
             trigger={
@@ -42,7 +26,7 @@ class App extends Component {
               event={event}
               />
             }
-            content={<EventFormShort onAdd={() => console.log('Added')} />}
+            content="kek"
             position="right-top"
           />
         </Container>

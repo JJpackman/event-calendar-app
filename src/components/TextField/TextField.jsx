@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import styles from './TextField.css';
+import classnames from 'classnames';
 
 class TextField extends Component {
   constructor(props) {
@@ -40,6 +42,9 @@ class TextField extends Component {
 
     return (
       <input
+        className={classnames(
+          styles.textfield
+        )}
         type="text"
         id={id}
         name={name}
