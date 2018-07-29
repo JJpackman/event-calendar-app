@@ -1,2 +1,7 @@
+@import '../../assets/sass/_variables.sass'
+@import '../../assets/sass/_mixins.sass'
+
 .searchfield
-  flex: 1 0 auto
+  +media($breakpointSmall)
+    flex-basis: 100%
+    margin-top: 10px

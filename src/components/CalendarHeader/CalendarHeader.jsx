@@ -1,26 +1,18 @@
 import React from 'react';
 import Header from '../Header/Header';
-import * as Button from '../Button/Button';
-import Popup from '../Popup/Popup';
-import EventFormShort from '../EventFormShort/EventFormShort';
 import Row from '../Row/Row';
 import SearchField from '../SearchField/SearchField';
+import AddButton from '../CalendarHeaderAddButton/CalendarHeaderAddButton';
 
 const CalendarHeader = () => (
   <Header>
     <Row
       hAlign="between"
       vAlign="center"
+      wrapping="wrap"
     >
-      <Popup
-          trigger={
-            <Button.Primary content="Add event" />
-          }
-          content={<EventFormShort onAdd={() => console.log('Added')} />}
-        />
-      <div>
-        <SearchField />
-      </div>
+      <AddButton onAdd={() => console.log('Add')} />
+      <SearchField />
     </Row>
   </Header>
 );

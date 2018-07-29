@@ -19,11 +19,18 @@ const VERTICAL_ALIGNMENT = {
   stretch: 'stretch'
 };
 
-const Row = ({children, hAlign, vAlign}) => (
+const WRAPPING = {
+  wrap: 'wrap',
+  nowrap: 'nowrap',
+  wrapReverse: 'wrap-reverse'
+};
+
+const Row = ({children, hAlign, vAlign, wrapping}) => (
   <div className={classnames(
     styles.row,
     styles[`row--h-${hAlign}`],
-    styles[`row--v-${vAlign}`]
+    styles[`row--v-${vAlign}`],
+    styles[`row--${wrapping}`]
   )}>
     {
       children
@@ -33,7 +40,8 @@ const Row = ({children, hAlign, vAlign}) => (
 
 Row.defaultProps = {
   hAlign: HORIZONTAL_ALIGNMENT.start,
-  vAlign: VERTICAL_ALIGNMENT.stretch
+  vAlign: VERTICAL_ALIGNMENT.stretch,
+  wrapping: WRAPPING.nowrap
 };
 
 export default Row;

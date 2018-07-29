@@ -23,6 +23,25 @@
   clip: rect(0 0 0 0)
   overflow: hidden
 
+=flex-wrap-fix($flex-basis, $max-viewport-width)
+  flex-grow: 1
+  flex-basis: $flex-basis
+  max-width: 100%
+
+  $multiplier: 1
+  $current-width: 0px
+
+  @while $current-width < $max-viewport-width
+    $current-width: $current-width + $flex-basis
+    $multiplier: $multiplier + 1
+
+    @media (min-width: $flex-basis * $multiplier)
+      max-width: percentage(1 / $multiplier)
+
+=media($media)
+  @media #{$media}
+    @content
+
 
 
 
