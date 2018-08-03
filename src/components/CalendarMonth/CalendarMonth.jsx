@@ -4,6 +4,7 @@ import Row from '../Row/Row';
 import CalendarDayWithPopup from '../CalendarDayWithPopup/CalendarDayWithPopup';
 import CalendarDay from '../CalendarDay/CalendarDay';
 import EventFormLong from '../EventFormLong/EventFormLong';
+import PropTypes from 'prop-types';
 
 const CalendarMonth = ({days}) => (
   <Container>
@@ -29,5 +30,9 @@ const CalendarMonth = ({days}) => (
     </Row>
   </Container>
 );
+
+CalendarMonth.propTypes = {
+  days: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default CalendarMonth;

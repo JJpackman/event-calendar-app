@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CalendarMonthView from '../components/CalendarMonth/CalendarMonth';
+import PropTypes from 'prop-types';
 
 class CalendarMonth extends Component {
   render() {
@@ -27,5 +28,9 @@ class CalendarMonth extends Component {
     );
   }
 }
+
+CalendarMonth.propTypes = {
+  date: PropTypes.object.isRequired
+};
 
 export default CalendarMonth;

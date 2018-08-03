@@ -1,17 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Paragraph.css';
-
-export const TEXT_ALIGN = {
-  left: 'paragraph--ta-left',
-  right: 'paragraph--ta-right',
-  center: 'paragraph--ta-center'
-};
+import PropTypes from 'prop-types';
 
 const Paragraph = ({children, textAlign}) => (
   <p className={classnames(
     styles.paragraph,
-    styles[textAlign]
+    styles[`paragraph--ta-${textAlign}`]
   )}
   >
     {
@@ -20,8 +15,13 @@ const Paragraph = ({children, textAlign}) => (
   </p>
 );
 
+Paragraph.propTypes = {
+  textAlign: PropTypes.oneOf(['left', 'right', 'center']),
+  children: PropTypes.node
+};
+
 Paragraph.defaultProps = {
-  textAlign: TEXT_ALIGN.left
+  textAlign: 'left'
 };
 
 export default Paragraph;

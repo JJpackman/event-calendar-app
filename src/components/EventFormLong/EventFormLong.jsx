@@ -9,19 +9,14 @@ import FormValidator from '../../utils/formValidator';
 import FormErrors from '../FormErrors/FormErrors';
 
 const PATTERNS = {
-  date: [
-    /^(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.(20\d{2})$/,
-    /^(3[01]|[12][0-9]|0?[1-9])-(1[012]|0?[1-9])-(20\d{2})$/
-  ],
   description: [/^([a-z]+)(?:(?: ){1}([a-z]+))*$/i],
   participants: [/^([A-Z]{1}[a-z]+)(?:(?:, ){1}([A-Z]{1}[a-z]+))*$/]
 };
 
 const ERROR_MESSAGES = {
-  date: 'Invalid format',
   description: 'Invalid format',
   participants: 'Invalid format'
-}
+};
 
 class EventFormLong extends Component {
   constructor() {
@@ -29,7 +24,6 @@ class EventFormLong extends Component {
 
     this.state = {
       event: {
-        date: '',
         description: '',
         participants: ''
       },
@@ -45,7 +39,6 @@ class EventFormLong extends Component {
   componentWillMount() {
     this.validator = new FormValidator();
     this.requiredFieldsValidStatus = {
-      date: false,
       description: false
     };
 
@@ -83,7 +76,7 @@ class EventFormLong extends Component {
   validateField(name, value) {
     const isRequired = (fieldName) => this.requiredFieldsValidStatus.hasOwnProperty(fieldName);
     const required = isRequired(name);
-    const result = this.validator.validateField(name, value);
+    const result = this.validator.validateField(name, value, required);
 
     if (required) {
       this.requiredFieldsValidStatus[name] = result;
@@ -117,7 +110,6 @@ class EventFormLong extends Component {
 
   render() {
     const fieldIds = {
-      date: _.uniqueId('event-date'),
       description: _.uniqueId('event-description'),
       participants: _.uniqueId('event-participants')
     };
@@ -127,23 +119,8 @@ class EventFormLong extends Component {
         {
           this.validator.fieldsWithErrors.length > 0 && <FormErrors errors={this.formErrors} />
         }
-        <Spacing.Vertical size={Spacing.SIZE.middle} direction="bottom">
-          <Spacing.Vertical size={Spacing.SIZE.small} direction="bottom">
-            <label htmlFor={fieldIds.date}>
-              <Label title="Date: " />
-            </label>
-          </Spacing.Vertical>
-          <Row>
-            <TextField
-              id={fieldIds.date}
-              name="date"
-              placeholder="19.05.2018"
-              onChange={this.handleChange}
-            />
-          </Row>
-        </Spacing.Vertical>
-        <Spacing.Vertical size={Spacing.SIZE.middle}>
-          <Spacing.Vertical size={Spacing.SIZE.small} direction="bottom">
+        <Spacing.Vertical size="md" direction="bottom">
+          <Spacing.Vertical size="sm" direction="bottom">
             <label htmlFor={fieldIds.description}>
               <Label title="Description: " />
             </label>
@@ -154,11 +131,12 @@ class EventFormLong extends Component {
               name="description"
               placeholder="Birthday"
               onChange={this.handleChange}
+              required={true}
             />
           </Row>
         </Spacing.Vertical>
-        <Spacing.Vertical size={Spacing.SIZE.middle} direction="bottom">
-          <Spacing.Vertical size={Spacing.SIZE.small} direction="bottom">
+        <Spacing.Vertical size="md" direction="bottom">
+          <Spacing.Vertical size="sm" direction="bottom">
             <label htmlFor={fieldIds.participants}>
               <Label title="Participants: " />
             </label>
@@ -172,11 +150,21 @@ class EventFormLong extends Component {
             />
           </Row>
         </Spacing.Vertical>
-        <Button.Primary fluid={true} content={this.state.empty ? "Add event" : "Change event"} disabled={!this.state.isFormValid} btnAction="submit" />
+        <Button.Primary
+          fluid={true}
+          content={this.state.empty ? "Add event" : "Change event"}
+          disabled={!this.state.isFormValid}
+          btnAction="submit"
+        />
         {
           !this.state.empty &&
-          <Spacing.Vertical size={Spacing.SIZE.middle}>
-            <Button.Danger fluid={true} onPress={this.handleDelete} content="Delete event" btnAction="button" />
+          <Spacing.Vertical size="md">
+            <Button.Danger
+              fluid={true}
+              onPress={this.handleDelete}
+              content="Delete event"
+              btnAction="button"
+            />
           </Spacing.Vertical>
         }
       </form>

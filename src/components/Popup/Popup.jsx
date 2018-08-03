@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import styles from './Popup.css';
+import PropTypes from 'prop-types';
 
 class Popup extends Component {
   constructor() {
@@ -40,6 +41,21 @@ class Popup extends Component {
     );
   }
 }
+
+Popup.propTypes = {
+  trigger: PropTypes.node.isRequired,
+  content: PropTypes.node.isRequired,
+  position: PropTypes.oneOf([
+    'bottom-left',
+    'bottom-right',
+    'right-bottom',
+    'right-top',
+    'left-bottom',
+    'left-top',
+    'top-right',
+    'top-left'
+  ])
+};
 
 Popup.defaultProps = {
   position: 'bottom-left'

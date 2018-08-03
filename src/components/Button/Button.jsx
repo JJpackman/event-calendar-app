@@ -1,24 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Button.css';
-
-const TYPES = {
-  primary: 'btn--primary',
-  success: 'btn--success',
-  danger: 'btn--danger'
-};
-
-export const SIZES = {
-  sm: 'btn--sm',
-  md: 'btn--md',
-  lg: 'btn--lg'
-};
-
-const BUTTON_ACTIONS = {
-  reset: 'reset',
-  submit: 'submit',
-  button: 'button'
-};
+import PropTypes from 'prop-types';
 
 const BaseButton = ({
   buttonType,
@@ -32,8 +15,8 @@ const BaseButton = ({
 }) => {
   const btnClass = classnames(
     styles.btn,
-    styles[buttonType],
-    styles[size],
+    styles[`btn--${buttonType}`],
+    styles[`btn--${size}`],
     fluid && styles['btn--fluid']
   );
 
@@ -56,19 +39,30 @@ const BaseButton = ({
   );
 };
 
+BaseButton.propTypes = {
+  buttonType: PropTypes.oneOf(['primary', 'success', 'danger']).isRequired,
+  fluid: PropTypes.bool,
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  btnAction: PropTypes.oneOf(['reset', 'submit', 'button']),
+  content: PropTypes.string,
+  children: PropTypes.node,
+  disabled: PropTypes.bool,
+  onPress: PropTypes.func
+};
+
 BaseButton.defaultProps = {
-  size: SIZES.sm,
-  btnAction: BUTTON_ACTIONS.button
+  size: 'sm',
+  btnAction: "button"
 };
 
 export const Primary = props => (
-  <BaseButton {...props} buttonType={TYPES.primary} />
+  <BaseButton {...props} buttonType="primary" />
 );
 
 export const Success = props => (
-  <BaseButton {...props} buttonType={TYPES.success} />
+  <BaseButton {...props} buttonType="success" />
 );
 
 export const Danger = props => (
-  <BaseButton {...props} buttonType={TYPES.danger} />
+  <BaseButton {...props} buttonType="danger" />
 );

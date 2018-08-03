@@ -1,37 +1,36 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Icon.css';
-
-const SIZE = {
-  small: 'icon--sm',
-  middle: 'icon--md',
-  large: 'icon--lg'
-};
+import PropTypes from 'prop-types';
 
 const Icon = ({name, size}) => (
   <span
     className={classnames(
       styles.icon,
       styles[`icon--${name}`],
-      styles[size]
+      styles[`icon--${size}`]
     )}
   >
     <span className={styles['icon__text']}>{name}</span>
   </span>
 );
 
+Icon.propTypes = {
+  size: PropTypes.oneOf(['sm', 'md', 'lg'])
+};
+
 Icon.defaultProps = {
-  size: SIZE.small
+  size: 'sm'
 };
 
 export const Small = props => (
-  <Icon {...props} size={SIZE.small}/>
+  <Icon {...props} size="sm"/>
 );
 
 export const Middle = props => (
-  <Icon {...props} size={SIZE.middle}/>
+  <Icon {...props} size="md"/>
 );
 
 export const Large = props => (
-  <Icon {...props} size={SIZE.large}/>
+  <Icon {...props} size="lg"/>
 );

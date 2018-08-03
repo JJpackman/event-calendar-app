@@ -2,6 +2,7 @@ import React from 'react';
 import Label from '../Label/Label';
 import styles from './FormErrors.css';
 import Row from '../Row/Row';
+import PropTypes from 'prop-types';
 
 const FormErrors = ({errors}) => (
   <div className={styles['form-errors']}>
@@ -16,5 +17,9 @@ const FormErrors = ({errors}) => (
     }
   </div>
 );
+
+FormErrors.propTypes = {
+  errors: PropTypes.object.isRequired
+};
 
 export default FormErrors;

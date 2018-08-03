@@ -1,29 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Row.css';
-
-const HORIZONTAL_ALIGNMENT = {
-  start: 'start',
-  end: 'end',
-  center: 'center',
-  between: 'between',
-  around: 'around',
-  evenly: 'evenly'
-};
-
-const VERTICAL_ALIGNMENT = {
-  start: 'start',
-  end: 'end',
-  center: 'center',
-  baseline: 'baseline',
-  stretch: 'stretch'
-};
-
-const WRAPPING = {
-  wrap: 'wrap',
-  nowrap: 'nowrap',
-  wrapReverse: 'wrap-reverse'
-};
+import PropTypes from 'prop-types';
 
 const Row = ({children, hAlign, vAlign, wrapping}) => (
   <div className={classnames(
@@ -38,10 +16,17 @@ const Row = ({children, hAlign, vAlign, wrapping}) => (
   </div>
 );
 
+Row.propTypes = {
+  hAlign: PropTypes.oneOf(['start', 'end', 'center', 'between', 'around', 'evenly']),
+  vAlign: PropTypes.oneOf(['start', 'end', 'center', 'baseline', 'stretch']),
+  wrapping: PropTypes.oneOf(['wrap', 'nowrap', 'wrap-reverse']),
+  children: PropTypes.node.isRequired
+};
+
 Row.defaultProps = {
-  hAlign: HORIZONTAL_ALIGNMENT.start,
-  vAlign: VERTICAL_ALIGNMENT.stretch,
-  wrapping: WRAPPING.nowrap
+  hAlign: 'start',
+  vAlign: 'stretch',
+  wrapping: 'wrap'
 };
 
 export default Row;

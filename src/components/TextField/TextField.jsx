@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './TextField.css';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 class TextField extends Component {
   constructor(props) {
@@ -37,7 +38,8 @@ class TextField extends Component {
       placeholder,
       disabled,
       name,
-      id
+      id,
+      required
     } = this.props;
 
     return (
@@ -53,9 +55,25 @@ class TextField extends Component {
         onKeyPress={this.handleKeyPress}
         disabled={disabled}
         placeholder={placeholder}
+        required={required}
       />
     );
   }
 }
+
+TextField.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  required: PropTypes.bool,
+  disabled: PropTypes.bool,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  onEnter: PropTypes.func
+};
+
+TextField.defaultProps = {
+  required: false,
+  disabled: false
+};
 
 export default TextField;

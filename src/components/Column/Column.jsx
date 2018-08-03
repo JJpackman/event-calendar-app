@@ -1,14 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Column.css';
-
-const ALIGNMENT = {
-  start: 'start',
-  end: 'end',
-  center: 'center',
-  baseline: 'baseline',
-  stretch: 'stretch'
-};
+import PropTypes from 'prop-types';
 
 const Column = ({children, alignSelf}) => (
   <div className={classnames(
@@ -21,8 +14,13 @@ const Column = ({children, alignSelf}) => (
   </div>
 );
 
+Column.propTypes = {
+  alignSelf: PropTypes.oneOf(['start', 'end', 'center', 'baseline', 'stretch']),
+  children: PropTypes.node.isRequired
+};
+
 Column.defaultProps = {
-  alignSelf: ALIGNMENT.stretch
+  alignSelf: 'stretch'
 };
 
 export default Column;
