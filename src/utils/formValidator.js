@@ -14,6 +14,10 @@ const FormValidator = () => {
       };
     }
 
+    removeRule(fieldName) {
+      this.hasRule(fieldName) && delete this[_rules][fieldName];
+    }
+
     validateField(fieldName, value, isRequired) {
       const isValidRequired = p => p.test(value) === true;
       const isValidNonRequired = p => value === '' || isValidRequired(p);
@@ -30,6 +34,10 @@ const FormValidator = () => {
 
     get fieldsWithErrors() {
       return this[_fieldsWithErrors];
+    }
+
+    hasRule(fieldName) {
+      return this[_rules].hasOwnProperty(fieldName);
     }
   }
 
