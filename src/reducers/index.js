@@ -1,3 +1,6 @@
 import {combineReducers} from 'redux';
+import date from './date';
 
-export default combineReducers({});
+export default combineReducers({
+  date
+});

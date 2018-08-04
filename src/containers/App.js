@@ -1,34 +1,27 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import MonthToggler from '../components/MonthToggler/MonthToggler';
 import CalendarHeader from '../components/CalendarHeader/CalendarHeader';
 import CalendarMonth from './CalendarMonth';
+import * as dateActions from '../actions/date';
+import { getDate } from '../selectors/selectors';
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.nextMonth = this.nextMonth.bind(this);
-    this.prevMonth = this.prevMonth.bind(this);
-  }
-
-  nextMonth() {
-    console.log('Next month');
-  }
-
-  prevMonth() {
-    console.log('Prev month');
-  }
-
   render() {
-    const date = new Date();
+    const {
+      date,
+      moveToNextMonth,
+      moveToPrevMonth
+    } = this.props;
 
     return (
       <div>
         <CalendarHeader />
         <MonthToggler
           date={date}
-          onNextMonth={this.nextMonth}
-          onPrevMonth={this.prevMonth}
+          onNextMonth={moveToNextMonth}
+          onPrevMonth={moveToPrevMonth}
         />
         <CalendarMonth date={date}/>
       </div>
@@ -36,4 +29,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  date: getDate(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators(dateActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

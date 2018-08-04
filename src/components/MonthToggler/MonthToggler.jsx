@@ -3,11 +3,12 @@ import Pagination from '../Pagination/Pagination';
 import Container from '../Container/Container';
 import * as Spacing from '../Spacing/Spacing';
 import PropTypes from 'prop-types';
+import dateManager from '../../utils/dateManager';
 
 const MonthToggler = ({date, onNextMonth, onPrevMonth}) => (
   <Spacing.Vertical size="lg">
     <Container>
-      <Pagination content={date.toDateString()} onNext={onNextMonth} onPrev={onPrevMonth} />
+      <Pagination content={`${dateManager.monthName(date)} ${date.getFullYear()}`} onNext={onNextMonth} onPrev={onPrevMonth} />
     </Container>
   </Spacing.Vertical>
 );
