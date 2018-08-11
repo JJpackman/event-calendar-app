@@ -37,6 +37,14 @@ const dateManager = () => {
     },
     clone(date) {
       return new Date(date.getTime());
+    },
+    dateOfDaysOfMonth(date) {
+      const dateClone = this.clone(date);
+      const endOfMonthDate = this.endOfMonth(dateClone).getDate();
+
+      return Array.from(new Array(endOfMonthDate), (val, i) => {
+        return new Date(dateClone.getFullYear(), dateClone.getMonth(), i + 1);
+      });
     }
   };
 };

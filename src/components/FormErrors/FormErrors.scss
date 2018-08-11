@@ -1,0 +1,19 @@
+@import '../../assets/sass/_variables.scss';
+
+.form-errors {
+  background-color: $salmon;
+  padding: 5px 10px;
+}
+
+.form-errors__message {
+  font-weight: 700;
+  font-size: 12px;
+  color: $white;
+}
+
+.form-errors__item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}

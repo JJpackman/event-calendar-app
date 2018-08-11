@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import MonthToggler from '../components/MonthToggler/MonthToggler';
-import CalendarHeader from '../components/CalendarHeader/CalendarHeader';
+import CalendarHeader from './CalendarHeader';
 import CalendarMonth from './CalendarMonth';
 import * as dateActions from '../actions/date';
 import { getDate } from '../selectors/selectors';

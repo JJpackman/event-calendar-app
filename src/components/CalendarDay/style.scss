@@ -1,0 +1,23 @@
+.calendar-day {
+  padding: 10px;
+}
+
+.calendar-day__date {
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+}
+
+.calendar-day__event {
+  margin-top: 20px;
+}
+
+.calendar-day__description-wrapper {
+  margin-bottom: 5px;
+}
+
+.calendar-day__description,
+.calendar-day__participants {
+  margin-top: 5px;
+  margin-bottom: 0;
+}

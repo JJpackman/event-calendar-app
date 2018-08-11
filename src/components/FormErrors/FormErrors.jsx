@@ -1,18 +1,19 @@
 import React from 'react';
-import Label from '../Label/Label';
+import * as Label from '../Label/Label';
 import styles from './FormErrors.css';
-import Row from '../Row/Row';
 import PropTypes from 'prop-types';
 
 const FormErrors = ({errors}) => (
   <div className={styles['form-errors']}>
     {
       Object.keys(errors).map((err, index) =>
-        <Row key={index} hAlign="between" vAlign="center" wrapping="wrap">
+        <div
+          className={styles['form-errors__item']}
+          key={index}>
 
-          <Label title={`${err}:`} />
+          <Label.Text light={true} title={`${err}:`} />
           <span className={styles['form-errors__message']}>{errors[err]}</span>
-        </Row>
+        </div>
       )
     }
   </div>

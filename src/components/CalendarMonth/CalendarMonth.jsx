@@ -1,14 +1,14 @@
 import React from 'react';
-import Container from '../Container/Container';
-import Row from '../Row/Row';
+import Container from '../common/Container/Container';
 import CalendarDayWithPopup from '../CalendarDayWithPopup/CalendarDayWithPopup';
 import CalendarDay from '../CalendarDay/CalendarDay';
 import EventFormLong from '../EventFormLong/EventFormLong';
 import PropTypes from 'prop-types';
+import styles from './CalendarMonth.css';
 
 const CalendarMonth = ({days}) => (
   <Container>
-    <Row wrapping="wrap" hAlign="start">
+    <div className={styles['calendar__month']}>
       {
         days.map((day, index) => (
           <CalendarDayWithPopup key={index}
@@ -27,7 +27,7 @@ const CalendarMonth = ({days}) => (
           />
         ))
       }
-    </Row>
+    </div>
   </Container>
 );
 

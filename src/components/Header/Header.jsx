@@ -1,26 +1,23 @@
 import React from 'react';
-import styles from './Header.css';
-import classnames from 'classnames';
-import Container from '../Container/Container';
-import PropTypes from 'prop-types';
+import SearchBar from './SearchBar/SearchBar';
+import * as Button from '../Button/Button';
+import Popup from '../Popup/Popup';
+import EventFormShort from '../EventFormShort/EventFormShort';
+import Container from '../common/Container/Container';
+import styles from './style.css';
 
-const Header = ({children}) => {
-  return (
-    <header className={classnames(
-      styles.header,
-      styles['header--light']
-    )}>
-      <Container>
-        {
-          children
-        }
-      </Container>
-    </header>
-  );
-};
+const CalendarHeader = ({addEvent}) => (
+  <header className={styles['header']}>
+    <Container>
+      <div className={styles['header__content']}>
+        <Popup
+          trigger={<Button.Primary content="Add event"/>}
+          content={<EventFormShort onAdd={addEvent} />}
+        />
+        <SearchBar />
+      </div>
+    </Container>
+  </header>
+);
 
-Header.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
-export default Header;
+export default CalendarHeader;

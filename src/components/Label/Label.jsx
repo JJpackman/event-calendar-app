@@ -3,21 +3,32 @@ import classnames from 'classnames';
 import styles from './Label.css';
 import PropTypes from 'prop-types';
 
-const Label = ({title, children, type}) => (
+const Label = ({title, type, light}) => (
   <div className={classnames(
     styles.label,
     styles[`label--${type}`]
   )}>
-    {children}
-    <span className={styles['label__title']}>{title}</span>
+    <span className={classnames(
+      styles['label__title'],
+      light && styles['label__title--light']
+    )}>
+      {title}
+    </span>
   </div>
 );
 
+
 Label.propTypes = {
   type: PropTypes.oneOf(['tag']),
-  children: PropTypes.node,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  light: PropTypes.bool
 };
 
-export default Label;
+export const Text = ({title, light}) => (
+  <Label title={title} light={light} />
+);
+
+export const Tag = ({title}) => (
+  <Label title={title} type="tag" />
+);
 

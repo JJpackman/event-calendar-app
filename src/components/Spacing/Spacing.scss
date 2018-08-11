@@ -1,0 +1,85 @@
+.h-spacing {
+  display: block;
+
+  &--inline {
+    display: inline-block;
+  }
+
+  &--vertical-sm-both {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  &--vertical-sm-top {
+    margin-top: 5px;
+  }
+
+  &--vertical-sm-bottom {
+    margin-bottom: 5px;
+  }
+
+  &--vertical-md-both {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  &--vertical-md-top {
+    margin-top: 10px;
+  }
+
+  &--vertical-md-bottom {
+    margin-bottom: 10px;
+  }
+
+  &--vertical-lg-both {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  &--vertical-lg-top {
+    margin-top: 20px;
+  }
+
+  &--vertical-lg-bottom {
+    margin-bottom: 20px;
+  }
+
+  &--horizontal-sm-both {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  &--horizontal-sm-right {
+    margin-right: 5px;
+  }
+
+  &--horizontal-sm-left {
+    margin-left: 5px;
+  }
+
+  &--horizontal-md-both {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  &--horizontal-md-right {
+    margin-right: 10px;
+  }
+
+  &--horizontal-md-left {
+    margin-left: 10px;
+  }
+
+  &--horizontal-lg-both {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  &--horizontal-lg-right {
+    margin-right: 20px;
+  }
+
+  &--horizontal-lg-left {
+    margin-left: 20px;
+  }
+}

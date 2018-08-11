@@ -1,0 +1,37 @@
+@import './assets/sass/_variables.scss';
+
+.header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: $light-grey;
+}
+
+.header__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__search {
+  position: relative;
+}
+
+.header__search-field {
+  padding: 8px 12px;
+  padding-right: 30px;
+  border: 1px solid rgba($shark, 0.15);
+  color: $black;
+  background-color: $white;
+}
+
+.header__search-icon {
+  position: absolute;
+  top: calc(50% - 8px);
+  right: 7px;
+  height: 16px;
+  width: 16px;
+  background-image: url('../../assets/img/search.svg');
+  background-size: 16px auto;
+  background-position: 0 0;
+}

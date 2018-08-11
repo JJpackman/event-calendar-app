@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import TextField from '../TextField/TextField';
 import * as Button from '../Button/Button';
 import * as Spacing from '../Spacing/Spacing';
-import Label from '../Label/Label';
-import Row from '../Row/Row';
+import * as Label from '../Label/Label';
 import _ from 'lodash';
 import FormValidator from '../../utils/formValidator';
 import FormErrors from '../FormErrors/FormErrors';
@@ -111,34 +110,30 @@ class EventFormShort extends Component {
         <Spacing.Vertical size="md" direction="bottom">
           <Spacing.Vertical size="sm" direction="bottom">
             <label htmlFor={fieldIds.date}>
-              <Label title="Date: " />
+              <Label.Text title="Date: " />
             </label>
           </Spacing.Vertical>
-          <Row>
-            <TextField
-              id={fieldIds.date}
-              name="date"
-              onChange={this.handleChange}
-              placeholder="19.05.2018"
-              required={true}
-            />
-          </Row>
+          <TextField
+            id={fieldIds.date}
+            name="date"
+            onChange={this.handleChange}
+            placeholder="19.05.2018"
+            required={true}
+          />
         </Spacing.Vertical>
         <Spacing.Vertical size="md" direction="bottom">
           <Spacing.Vertical size="sm" direction="bottom">
             <label htmlFor={fieldIds.description}>
-              <Label title="Description: " />
+              <Label.Text title="Description: " />
             </label>
           </Spacing.Vertical>
-          <Row>
-            <TextField
-              id={fieldIds.description}
-              name="description"
-              onChange={this.handleChange}
-              placeholder="Birthday"
-              required={true}
-            />
-          </Row>
+          <TextField
+            id={fieldIds.description}
+            name="description"
+            onChange={this.handleChange}
+            placeholder="Birthday"
+            required={true}
+          />
         </Spacing.Vertical>
         <Button.Primary
           fluid={true}

@@ -91,5 +91,16 @@ describe('date manager', () => {
         expect(dataManager.monthName(monthNamesOfDates[monthName])).toStrictEqual(monthName);
       });
     });
+
+    it('should handle dateOfDaysOfMonth() to return array of dates of month days', () => {
+      const currentDate = new Date(2018, 8, 11);
+      const endDateOfMonth = dataManager.endOfMonth(currentDate).getDate();
+
+      const actualDateOfDays = Array.from(new Array(endDateOfMonth), (val, i) => {
+        return new Date(currentDate.getFullYear(), currentDate.getMonth(), i + 1);
+      });
+
+      expect(dataManager.dateOfDaysOfMonth(currentDate)).toEqual(actualDateOfDays);
+    });
   });
 });
