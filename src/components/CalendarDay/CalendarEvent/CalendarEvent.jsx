@@ -25,7 +25,7 @@ const CalendarEvent = ({event}) => (
 CalendarEvent.propTypes = {
   event: PropTypes.shape({
     description: PropTypes.string.isRequired,
-    participants: PropTypes.arrayOf(PropTypes.string)
+    participants: PropTypes.string
   }).isRequired
 };
 

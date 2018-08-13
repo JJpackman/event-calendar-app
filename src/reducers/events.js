@@ -1,4 +1,5 @@
 import * as t from '../actions/actionTypes';
+import generateEventId from '../utils/generateEventId';
 
 const initialState = {
   events: []
@@ -10,7 +11,10 @@ export default (state = initialState, action) => {
       return {
         events: [
           ...state.events,
-          action.payload
+          {
+            ...action.payload,
+            id: generateEventId(action.payload.date)
+          }
         ]
       };
     case t.EDIT_EVENT: {

@@ -4,14 +4,28 @@ import styles from './Popup.css';
 import PropTypes from 'prop-types';
 
 class Popup extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       isOpen: false
     };
 
-    this.toggleIsOpen = this.toggleIsOpen.bind(this);
+    this.toggleIsOpen = this.props.externalIsOpen === undefined ? this.toggleIsOpen.bind(this) : this.toggleIsOpenExternal.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.isOpen && !nextProps.externalIsOpen) {
+      this.closePopupFromExternal();
+    }
+  }
+
+  closePopupFromExternal() {
+    if (this.props.externalIsOpen) {
+      this.setState({
+        isOpen: false
+      });
+    }
   }
 
   toggleIsOpen() {
@@ -20,14 +34,35 @@ class Popup extends Component {
     }));
   }
 
+  toggleIsOpenExternal() {
+    const {
+      externalIsOpen,
+      externalOpenToggler
+    } = this.props;
+
+    if (!externalIsOpen) {
+      this.setState(prevState => ({
+        isOpen: true
+      }), () => {
+        externalOpenToggler();
+      });
+    } else if (externalIsOpen && this.state.isOpen) {
+      this.setState(prevState => ({
+        isOpen: !prevState.isOpen
+      }), () => {
+        externalOpenToggler();
+      });
+    }
+  }
+
   render() {
     const {trigger, content, position} = this.props;
 
     return (
       <div className={styles['popup-container']}>
-        <span onClick={this.toggleIsOpen}>
+        <div className={styles['popup-container__trigger']} onClick={this.toggleIsOpen}>
           {trigger}
-        </span>
+        </div>
         {
           this.state.isOpen &&
           <div className={classnames(
@@ -54,7 +89,9 @@ Popup.propTypes = {
     'left-top',
     'top-right',
     'top-left'
-  ])
+  ]),
+  externalIsOpen: PropTypes.bool,
+  externalOpenToggler: PropTypes.func
 };
 
 Popup.defaultProps = {

@@ -22,10 +22,19 @@ const errorMessages = {
 };
 
 class MonthItemEventForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.state = {
+    const { existedEvent } = this.props;
+
+    this.state = existedEvent ? {
+      event: {
+        description: existedEvent.description,
+        participants: existedEvent.participants
+      },
+      empty: false,
+      isFormValid: true
+    } : {
       event: {
         description: '',
         participants: ''
@@ -53,17 +62,30 @@ class MonthItemEventForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.isFormValid) {
-      this.props.onAdd(this.state.event);
-      this.setState({
-        empty: false
-      });
+      if (this.state.empty) {
+        this.setState({
+          empty: false
+        }, () => {
+          this.props.onAdd({
+            ...this.state.event,
+            date: this.props.eventDate
+          });
+        });
+      } else {
+        this.props.onEdit({
+          ...this.state.event,
+          date: this.props.existedEvent.date,
+          id: this.props.existedEvent.id
+        });
+      }
     }
   }
 
   handleDelete() {
-    this.props.onDelete(this.state.event);
     this.setState({
       empty: true
+    }, () => {
+      this.props.onDelete(this.props.existedEvent.id);
     });
   }
 
@@ -143,6 +165,7 @@ class MonthItemEventForm extends Component {
             onChange={this.handleChange}
             placeholder="Birthday"
             required={true}
+            defaultValue={this.state.event.description}
           />
         </div>
         <div className={styles['calendar__event-form-field']}>
@@ -157,6 +180,7 @@ class MonthItemEventForm extends Component {
             name="participants"
             placeholder="Nikolay, Olga"
             onChange={this.handleChange}
+            defaultValue={this.state.event.participants}
           />
         </div>
         <div className={styles['calendar__event-form-buttons']}>
@@ -205,7 +229,14 @@ class MonthItemEventForm extends Component {
 MonthItemEventForm.propTypes = {
   onAdd: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired
+  onEdit: PropTypes.func.isRequired,
+  existedEvent: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    date: PropTypes.object.isRequired,
+    description: PropTypes.string.isRequired,
+    participants: PropTypes.string
+  }),
+  eventDate: PropTypes.object.isRequired
 };
 
 export default MonthItemEventForm;

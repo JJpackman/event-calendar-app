@@ -59,7 +59,6 @@ class HeaderEventForm extends Component {
       }, () => {
         const [ , day, month, year ] = patterns.date[0].exec(this.state.event.date);
 
-        debugger;
         this.props.onAdd({
           ...this.state.event,
           date: new Date(+year, +month - 1, +day)

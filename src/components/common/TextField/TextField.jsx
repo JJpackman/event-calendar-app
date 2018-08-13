@@ -8,7 +8,7 @@ class TextField extends Component {
     super(props);
 
     this.state = {
-      text: ''
+      text: this.props.defaultValue || ''
     };
 
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -68,7 +68,8 @@ TextField.propTypes = {
   disabled: PropTypes.bool,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
-  onEnter: PropTypes.func
+  onEnter: PropTypes.func,
+  defaultValue: PropTypes.string
 };
 
 TextField.defaultProps = {
