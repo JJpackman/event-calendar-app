@@ -15,7 +15,7 @@ const CalendarEvent = ({event}) => (
       <div>
         <Label.Tag title="Participants" />
         <p className={styles['calendar-day__participants']}>
-          { event.participants.join(", ") }
+          { event.participants }
         </p>
       </div>
     }

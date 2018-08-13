@@ -1,33 +1,40 @@
 import React from 'react';
 import Container from '../common/Container/Container';
-import CalendarDayWithPopup from '../CalendarDayWithPopup/CalendarDayWithPopup';
 import CalendarDay from '../CalendarDay/CalendarDay';
-import * as EventForm from '../EventForm/EventForm';
+import Popup from '../common/Popup/Popup';
+import MonthItemEventForm from './MonthItemEventForm/MonthItemEventForm';
 import PropTypes from 'prop-types';
 import dataManager from '../../utils/dateManager';
-import styles from './CalendarMonth.css';
+import styles from './style.css';
 
-const CalendarMonth = ({date, events, addEvent}) => {
+const CalendarMonth = ({date, events, addEvent, editEvent, deleteEvent}) => {
   const daysDates = dataManager.dateOfDaysOfMonth(date).map(dayDate => dayDate);
-  const findEventForThatDate = (date) => events.find(event => dataManager.compareDatesWithoutTime(event.date, date));
+  const getEventForThatDate = (date) => events.find(event => dataManager.compareDatesWithoutTime(event.date, date));
 
   return (
     <Container>
       <div className={styles['calendar__month']}>
         {
           daysDates.map((dayDate, index) => (
-            <CalendarDayWithPopup
+            <div
               key={index}
-              day={
-                <CalendarDay
-                  date={dayDate}
-                  event={findEventForThatDate(dayDate)}
-                />
-              }
-              popupContent={
-                <EventForm.Full onAdd={addEvent}/>
-              }
-            />
+              className={styles['calendar__month-item']}>
+              <Popup
+                trigger={
+                  <CalendarDay
+                    date={dayDate}
+                    event={getEventForThatDate(dayDate)}
+                  />
+                }
+                content={
+                  <MonthItemEventForm
+                    onAdd={addEvent}
+                    onDelete={deleteEvent}
+                    onEdit={editEvent}
+                  />
+                }
+              />
+            </div>
           ))
         }
       </div>

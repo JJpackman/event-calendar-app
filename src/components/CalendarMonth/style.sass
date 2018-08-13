@@ -1,0 +1,27 @@
+@import '../../assets/sass/_mixins.sass'
+@import '../../assets/sass/_variables.scss'
+
+.calendar__month
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: stretch;
+
+.calendar__event-form-field
+  margin-bottom: 10px
+
+.calendar__event-form-label
+  margin-bottom: 5px
+
+.calendar__event-form-buttons
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+
+.calendar__event-form-buttons button:not(:first-child)
+  margin-left: 10px
+
+.calendar__month-item
+  border: 1px solid $thistle
+  min-width: 16.666%
+  +flex-wrap-fix(200px, 1170px)
