@@ -1,0 +1,61 @@
+@import '../../../assets/sass/_variables.scss';
+
+.btn {
+  display: inline-block;
+  border: none;
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+
+  &--sm {
+    padding: 5px 12px;
+  }
+
+  &--md {
+    padding: 8px 18px;
+  }
+
+  &--lg {
+    padding: 12px 24px;
+  }
+
+  &--fluid {
+    display: block;
+    width: 100%;
+  }
+
+  &--primary {
+    background-color: $dodge-blue;
+  }
+
+  &--success {
+    background-color: $medium-sea-green;
+  }
+
+  &--danger {
+    background-color: $crimson;
+  }
+}
+
+.btn--sm .btn__text {
+  font-size: 14px;
+}
+
+.btn--md .btn__text {
+  font-size: $base-font-size;
+}
+
+.btn--lg .btn__text {
+  font-size: 22px;
+}
+
+.btn__text {
+  font-weight: 700;
+  color: $white;
+}
+
+.btn__icon .btn__text {
+  margin-left: 10px;
+}

@@ -45,6 +45,15 @@ const dateManager = () => {
       return Array.from(new Array(endOfMonthDate), (val, i) => {
         return new Date(dateClone.getFullYear(), dateClone.getMonth(), i + 1);
       });
+    },
+    compareDatesWithoutTime(date1, date2) {
+      const date1Clone = this.clone(date1);
+      const date2Clone = this.clone(date2);
+
+      date1Clone.setHours(0, 0, 0, 0);
+      date2Clone.setHours(0, 0, 0, 0);
+
+      return date1Clone.getTime() === date2Clone.getTime();
     }
   };
 };

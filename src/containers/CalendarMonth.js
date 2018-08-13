@@ -1,31 +1,21 @@
-import React, { Component } from 'react';
-import CalendarMonthView from '../components/CalendarMonth/CalendarMonth';
-import PropTypes from 'prop-types';
-import dataManager from '../utils/dateManager';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import CalendarMonth from '../components/CalendarMonth/CalendarMonth';
+import * as eventsActions from '../actions/events';
 
-class CalendarMonth extends Component {
-  render() {
-    const {date} = this.props;
-
-    const event = {
-      date,
-      participants: ['Johny', 'Bill', 'Sandra'],
-      description: 'Birthday'
-    };
-
-    const days = dataManager.dateOfDaysOfMonth(date).map(dayDate => ({
-      date: dayDate,
-      event
-    }));
-
-    return (
-      <CalendarMonthView days={days}/>
-    );
-  }
-}
-
-CalendarMonth.propTypes = {
-  date: PropTypes.object.isRequired
+const filterBooksByMonth = (events, date) => {
+  return events.filter(event =>
+    (event.date.getMonth() === date.getMonth()) &&
+    (event.date.getFullYear() === date.getFullYear())
+  );
 };
 
-export default CalendarMonth;
+const mapStateToProps = ({events, date}) => ({
+  events: filterBooksByMonth(events.events, date.date)
+});
+
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators(eventsActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarMonth);

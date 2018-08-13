@@ -1,5 +1,5 @@
 import React from 'react';
-import Popup from '../Popup/Popup';
+import Popup from '../common/Popup/Popup';
 import styles from './CalendarDayWithPopup.css';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';

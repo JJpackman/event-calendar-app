@@ -19,7 +19,7 @@
 
 .header__search-field {
   padding: 8px 12px;
-  padding-right: 30px;
+  padding-left: 30px;
   border: 1px solid rgba($shark, 0.15);
   color: $black;
   background-color: $white;
@@ -28,7 +28,7 @@
 .header__search-icon {
   position: absolute;
   top: calc(50% - 8px);
-  right: 7px;
+  left: 7px;
   height: 16px;
   width: 16px;
   background-image: url('../../assets/img/search.svg');

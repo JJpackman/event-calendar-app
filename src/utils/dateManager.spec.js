@@ -102,5 +102,39 @@ describe('date manager', () => {
 
       expect(dataManager.dateOfDaysOfMonth(currentDate)).toEqual(actualDateOfDays);
     });
+
+    it('should handle compareDatesWithoutTime() to return true if dates without time are equal', () => {
+      const datePairs = [
+        {
+          first: new Date(2015, 4, 3, 12, 42, 49),
+          second: new Date(2015, 4, 3, 14, 32, 40)
+        },
+        {
+          first: new Date(2018, 8, 12, 1, 38, 20),
+          second: new Date(2018, 8, 12, 3, 12, 30)
+        }
+      ];
+
+      datePairs.forEach(pair => {
+        expect(dataManager.compareDatesWithoutTime(pair.first, pair.second)).toBeTruthy();
+      })
+    });
+
+    it('should handle compareDatesWithoutTime() to return false if dates without time aren\'t equal', () => {
+      const datesPairs = [
+        {
+          first: new Date(2017, 4, 1, 14, 32, 40),
+          second: new Date(2017, 4, 3, 14, 32, 40)
+        },
+        {
+          first: new Date(2013, 8, 12, 14, 32, 20),
+          second: new Date(2017, 4, 3, 14, 32, 40)
+        }
+      ];
+
+      datesPairs.forEach(pair => {
+        expect(dataManager.compareDatesWithoutTime(pair.first, pair.second)).toBeFalsy();
+      })
+    });
   });
 });

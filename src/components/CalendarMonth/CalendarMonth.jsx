@@ -2,37 +2,41 @@ import React from 'react';
 import Container from '../common/Container/Container';
 import CalendarDayWithPopup from '../CalendarDayWithPopup/CalendarDayWithPopup';
 import CalendarDay from '../CalendarDay/CalendarDay';
-import EventFormLong from '../EventFormLong/EventFormLong';
+import * as EventForm from '../EventForm/EventForm';
 import PropTypes from 'prop-types';
+import dataManager from '../../utils/dateManager';
 import styles from './CalendarMonth.css';
 
-const CalendarMonth = ({days}) => (
-  <Container>
-    <div className={styles['calendar__month']}>
-      {
-        days.map((day, index) => (
-          <CalendarDayWithPopup key={index}
-            day={
-              <CalendarDay
-                date={day.date}
-                event={day.event}
-              />
-            }
-            popupContent={
-              <EventFormLong
-                onAdd={() => console.log('Add')}
-                onDelete={() => console.log('Delete')}
-              />
-            }
-          />
-        ))
-      }
-    </div>
-  </Container>
-);
+const CalendarMonth = ({date, events, addEvent}) => {
+  const daysDates = dataManager.dateOfDaysOfMonth(date).map(dayDate => dayDate);
+  const findEventForThatDate = (date) => events.find(event => dataManager.compareDatesWithoutTime(event.date, date));
+
+  return (
+    <Container>
+      <div className={styles['calendar__month']}>
+        {
+          daysDates.map((dayDate, index) => (
+            <CalendarDayWithPopup
+              key={index}
+              day={
+                <CalendarDay
+                  date={dayDate}
+                  event={findEventForThatDate(dayDate)}
+                />
+              }
+              popupContent={
+                <EventForm.Full onAdd={addEvent}/>
+              }
+            />
+          ))
+        }
+      </div>
+    </Container>
+  );
+};
 
 CalendarMonth.propTypes = {
-  days: PropTypes.arrayOf(PropTypes.object).isRequired
+  addEvent: PropTypes.func.isRequired
 };
 
 export default CalendarMonth;

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Label from '../Label/Label';
+import * as Label from '../common/Label/Label';
 import styles from './FormErrors.css';
 import PropTypes from 'prop-types';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Pagination from '../common/Pagination/Pagination';
 import Container from '../common/Container/Container';
-import * as Spacing from '../Spacing/Spacing';
+import * as Spacing from '../common/Spacing/Spacing';
 import PropTypes from 'prop-types';
 import dateManager from '../../utils/dateManager';
 

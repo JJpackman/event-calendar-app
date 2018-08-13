@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as Label from '../../Label/Label';
+import * as Label from '../../common/Label/Label';
 import styles from '../style.css';
 
 const CalendarEvent = ({event}) => (
