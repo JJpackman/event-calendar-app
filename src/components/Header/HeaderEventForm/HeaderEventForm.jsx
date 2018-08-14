@@ -3,7 +3,7 @@ import TextField from '../../common/TextField/TextField';
 import * as Button from '../../common/Button/Button';
 import * as Label from '../../common/Label/Label';
 import _ from 'lodash';
-import addIcon from '../../../assets/img/plus.svg';
+import sprite from '../../../assets/img/sprite.svg';
 import PropTypes from 'prop-types';
 import FormValidator from '../../../utils/formValidator';
 import FormErrors from '../../FormErrors/FormErrors';
@@ -177,12 +177,9 @@ class HeaderEventForm extends Component {
         <Button.Primary
           disabled={!this.state.isFormValid}
           icon={
-            <img
-              src={addIcon}
-              alt="Add"
-              width="16"
-              height="16"
-            />
+            <svg height="16" width="16">
+              <use xlinkHref={`${sprite}#plus`}></use>
+            </svg>
           }
           btnAction="submit"
           size="sm"

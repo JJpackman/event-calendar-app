@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import sprite from '../../../assets/img/sprite.svg';
 import styles from '../style.css';
 
 class SearchBar extends Component {
@@ -11,7 +12,13 @@ class SearchBar extends Component {
           name="search-query"
           placeholder="Birthday, 19.05.2018, Anna"
         />
-        <span className={styles['header__search-icon']}></span>
+        <svg
+          className={styles['header__search-icon']}
+          height="16"
+          width="16"
+        >
+          <use xlinkHref={`${sprite}#search`}></use>
+        </svg>
       </div>
     );
   }

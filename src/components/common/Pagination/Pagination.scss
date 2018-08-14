@@ -1,9 +1,15 @@
+@import '../../../assets/sass/_variables.scss';
+
 .pagination {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   width: 300px;
   max-width: 100%;
+}
+
+.pagination__control {
+  fill: $white;
 }
 
 .pagination__content {

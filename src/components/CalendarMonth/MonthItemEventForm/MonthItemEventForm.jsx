@@ -3,9 +3,7 @@ import TextField from '../../common/TextField/TextField';
 import * as Button from '../../common/Button/Button';
 import * as Label from '../../common/Label/Label';
 import _ from 'lodash';
-import addIcon from '../../../assets/img/plus.svg';
-import deleteIcon from '../../../assets/img/trash.svg';
-import editIcon from '../../../assets/img/pen.svg';
+import sprite from '../../../assets/img/sprite.svg';
 import PropTypes from 'prop-types';
 import FormValidator from '../../../utils/formValidator';
 import FormErrors from '../../FormErrors/FormErrors';
@@ -188,18 +186,12 @@ class MonthItemEventForm extends Component {
             disabled={!this.state.isFormValid}
             icon={
               this.state.empty ?
-                <img
-                  src={addIcon}
-                  alt="Add"
-                  width="16"
-                  height="16"
-                /> :
-                <img
-                  src={editIcon}
-                  alt="Edit"
-                  width="16"
-                  height="16"
-                />
+                <svg height="16" width="16">
+                  <use xlinkHref={`${sprite}#plus`}></use>
+                </svg> :
+                <svg height="16" width="16">
+                  <use xlinkHref={`${sprite}#pen`}></use>
+                </svg>
               }
             btnAction="submit"
             size="sm"
@@ -209,12 +201,9 @@ class MonthItemEventForm extends Component {
             <Button.Danger
               onPress={this.handleDelete}
               icon={
-                <img
-                  src={deleteIcon}
-                  alt="Delete"
-                  width="16"
-                  height="16"
-                />
+                <svg height="16" width="16">
+                  <use xlinkHref={`${sprite}#trash`}></use>
+                </svg>
               }
               btnAction="button"
               size="sm"
