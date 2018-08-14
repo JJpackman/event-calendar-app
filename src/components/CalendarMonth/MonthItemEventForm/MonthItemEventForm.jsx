@@ -186,10 +186,20 @@ class MonthItemEventForm extends Component {
             disabled={!this.state.isFormValid}
             icon={
               this.state.empty ?
-                <svg height="16" width="16">
+                <svg
+                  height="16"
+                  width="16"
+                  role="img"
+                >
+                  <title>Добавить событие</title>
                   <use xlinkHref={`${sprite}#plus`}></use>
                 </svg> :
-                <svg height="16" width="16">
+                <svg
+                  height="16"
+                  width="16"
+                  role="img"
+                >
+                  <title>Редактировать событие</title>
                   <use xlinkHref={`${sprite}#pen`}></use>
                 </svg>
               }
@@ -201,7 +211,12 @@ class MonthItemEventForm extends Component {
             <Button.Danger
               onPress={this.handleDelete}
               icon={
-                <svg height="16" width="16">
+                <svg
+                  height="16"
+                  width="16"
+                  role="img"
+                >
+                  <title>Удалить событие</title>
                   <use xlinkHref={`${sprite}#trash`}></use>
                 </svg>
               }

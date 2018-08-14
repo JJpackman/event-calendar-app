@@ -16,6 +16,8 @@ class SearchBar extends Component {
           className={styles['header__search-icon']}
           height="16"
           width="16"
+          aria-hidden="true"
+          role="presentation"
         >
           <use xlinkHref={`${sprite}#search`}></use>
         </svg>

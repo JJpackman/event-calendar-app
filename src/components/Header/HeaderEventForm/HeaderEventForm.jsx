@@ -177,7 +177,12 @@ class HeaderEventForm extends Component {
         <Button.Primary
           disabled={!this.state.isFormValid}
           icon={
-            <svg height="16" width="16">
+            <svg
+              height="16"
+              width="16"
+              role="img"
+            >
+              <title>Добавить событие</title>
               <use xlinkHref={`${sprite}#plus`}></use>
             </svg>
           }

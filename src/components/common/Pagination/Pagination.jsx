@@ -13,7 +13,9 @@ const Pagination = ({onNext, onPrev, content}) => (
           className={styles['pagination__control']}
           height="16"
           width="16"
+          role="img"
         >
+          <title>Переключение назад</title>
           <use xlinkHref={`${sprite}#left-arrow`}></use>
         </svg>
       }
@@ -25,7 +27,10 @@ const Pagination = ({onNext, onPrev, content}) => (
         <svg
           className={styles['pagination__control']}
           height="16"
-          width="16">
+          width="16"
+          role="img"
+        >
+          <title>Переключение вперед</title>
           <use xlinkHref={`${sprite}#right-arrow`}></use>
         </svg>
       }
