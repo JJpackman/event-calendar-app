@@ -3,6 +3,8 @@
 .form-errors {
   background-color: $salmon;
   padding: 5px 10px;
+  list-style: none;
+  margin: 0;
 }
 
 .form-errors__message {

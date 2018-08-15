@@ -11,21 +11,17 @@ class Popup extends Component {
       isOpen: false
     };
 
-    this.toggleIsOpen = this.props.externalIsOpen === undefined ? this.toggleIsOpen.bind(this) : this.toggleIsOpenExternal.bind(this);
+    this.popupContainer = React.createRef();
+    this.toggleIsOpen = this.toggleIsOpen.bind(this);
+    this.onClickOutsideHandler = this.onClickOutsideHandler.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.state.isOpen && !nextProps.externalIsOpen) {
-      this.closePopupFromExternal();
-    }
+  componentDidMount() {
+    window.addEventListener('click', this.onClickOutsideHandler);
   }
 
-  closePopupFromExternal() {
-    if (this.props.externalIsOpen) {
-      this.setState({
-        isOpen: false
-      });
-    }
+  componentWillUnmount() {
+    window.removeEventListener('click', this.onClickOutsideHandler);
   }
 
   toggleIsOpen() {
@@ -34,24 +30,9 @@ class Popup extends Component {
     }));
   }
 
-  toggleIsOpenExternal() {
-    const {
-      externalIsOpen,
-      externalOpenToggler
-    } = this.props;
-
-    if (!externalIsOpen) {
-      this.setState(prevState => ({
-        isOpen: true
-      }), () => {
-        externalOpenToggler();
-      });
-    } else if (externalIsOpen && this.state.isOpen) {
-      this.setState(prevState => ({
-        isOpen: !prevState.isOpen
-      }), () => {
-        externalOpenToggler();
-      });
+  onClickOutsideHandler(event) {
+    if (this.state.isOpen && !this.popupContainer.current.contains(event.target)) {
+      this.setState({ isOpen: false });
     }
   }
 
@@ -59,16 +40,24 @@ class Popup extends Component {
     const {trigger, content, position} = this.props;
 
     return (
-      <div className={styles['popup-container']}>
-        <div className={styles['popup-container__trigger']} onClick={this.toggleIsOpen}>
+      <div
+        className={styles['popup-container']}
+        ref={this.popupContainer}
+      >
+        <div
+          className={styles['popup-container__trigger']}
+          onClick={this.toggleIsOpen}
+        >
           {trigger}
         </div>
         {
           this.state.isOpen &&
-          <div className={classnames(
-            styles['popup-container__popup'],
-            styles[`popup-container__popup--${position}`]
-          )}>
+          <div
+            className={classnames(
+              styles['popup-container__popup'],
+              styles[`popup-container__popup--${position}`]
+            )}
+          >
             {content}
           </div>
         }

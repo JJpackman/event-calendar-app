@@ -6,17 +6,12 @@ import PropTypes from 'prop-types';
 const Label = ({title, type, light}) => (
   <div className={classnames(
     styles.label,
-    styles[`label--${type}`]
+    styles[`label--${type}`],
+    light && styles['label--light']
   )}>
-    <span className={classnames(
-      styles['label__title'],
-      light && styles['label__title--light']
-    )}>
-      {title}
-    </span>
+    {title}
   </div>
 );
-
 
 Label.propTypes = {
   type: PropTypes.oneOf(['tag']),

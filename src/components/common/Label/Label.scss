@@ -2,6 +2,13 @@
 
 .label {
   display: inline-block;
+  font-size: 12px;
+  font-weight: 400;
+  color: $dimgray;
+
+  &--light {
+    color: $white;
+  }
 
   &--tag {
     position: relative;
@@ -32,16 +39,6 @@
       background-color: $white;
       border-radius: 50%;
     }
-  }
-}
-
-.label__title {
-  font-size: 12px;
-  font-weight: 400;
-  color: $dimgray;
-
-  &--light {
-    color: $white;
   }
 }
 

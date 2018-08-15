@@ -4,19 +4,19 @@ import styles from './FormErrors.css';
 import PropTypes from 'prop-types';
 
 const FormErrors = ({errors}) => (
-  <div className={styles['form-errors']}>
+  <ul className={styles['form-errors']}>
     {
       Object.keys(errors).map((err, index) =>
-        <div
+        <li
           className={styles['form-errors__item']}
           key={index}>
 
           <Label.Text light={true} title={`${err}:`} />
           <span className={styles['form-errors__message']}>{errors[err]}</span>
-        </div>
+        </li>
       )
     }
-  </div>
+  </ul>
 );
 
 FormErrors.propTypes = {

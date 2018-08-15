@@ -8,40 +8,6 @@ import dataManager from '../../utils/dateManager';
 import styles from './style.css';
 
 class CalendarMonth extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      isAnyPopupOpen: false
-    };
-
-    this.toggleAnyPopupOpen = this.toggleAnyPopupOpen.bind(this);
-    this.addEventAndHidePopup = this.addEventAndHidePopup.bind(this);
-    this.editEventAndHidePopup = this.editEventAndHidePopup.bind(this);
-    this.deleteEventAndHidePopup = this.deleteEventAndHidePopup.bind(this);
-  }
-
-  toggleAnyPopupOpen() {
-    this.setState(prevState => ({
-      isAnyPopupOpen: !prevState.isAnyPopupOpen
-    }));
-  }
-
-  addEventAndHidePopup(event) {
-    this.props.addEvent(event);
-    this.toggleAnyPopupOpen();
-  }
-
-  editEventAndHidePopup(event) {
-    this.props.editEvent(event);
-    this.toggleAnyPopupOpen();
-  }
-
-  deleteEventAndHidePopup(id) {
-    this.props.deleteEvent(id);
-    this.toggleAnyPopupOpen();
-  }
-
   render() {
     const {
       date,
@@ -71,15 +37,13 @@ class CalendarMonth extends Component {
                     }
                     content={
                       <MonthItemEventForm
-                        onAdd={this.addEventAndHidePopup}
-                        onDelete={this.deleteEventAndHidePopup}
-                        onEdit={this.editEventAndHidePopup}
+                        onAdd={this.props.addEvent}
+                        onDelete={this.props.deleteEvent}
+                        onEdit={this.props.editEvent}
                         eventDate={dayDate}
                         existedEvent={event}
                       />
                     }
-                    externalIsOpen={this.state.isAnyPopupOpen}
-                    externalOpenToggler={this.toggleAnyPopupOpen}
                   />
                 </div>
               );

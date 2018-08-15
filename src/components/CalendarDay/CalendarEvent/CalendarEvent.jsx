@@ -4,7 +4,7 @@ import * as Label from '../../common/Label/Label';
 import styles from '../style.css';
 
 const CalendarEvent = ({event}) => (
-  <div className={styles['calendar-day__event']}>
+  <React.Fragment>
     <div className={styles['calendar-day__description-wrapper']}>
       <Label.Tag title="Description" />
       <p className={styles['calendar-day__description']}>
@@ -12,14 +12,14 @@ const CalendarEvent = ({event}) => (
       </p>
     </div>
     { event.participants &&
-      <div>
+      <div className={styles['calendar-day__description-wrapper']}>
         <Label.Tag title="Participants" />
         <p className={styles['calendar-day__participants']}>
           { event.participants }
         </p>
       </div>
     }
-  </div>
+  </React.Fragment>
 );
 
 CalendarEvent.propTypes = {

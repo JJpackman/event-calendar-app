@@ -13,7 +13,11 @@
 }
 
 .calendar-day__description-wrapper {
-  margin-bottom: 5px;
+  margin-top: 5px;
+
+  &:nth-child(2) {
+    margin-top: 20px;
+  }
 }
 
 .calendar-day__description,
