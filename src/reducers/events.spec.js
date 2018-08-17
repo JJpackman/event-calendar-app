@@ -25,15 +25,20 @@ describe('Events reducer', () => {
     const addAction = {
       type: actionTypes.ADD_EVENT,
       payload: {
-        id: generateEventId(currDate),
+        date: currDate,
         description: 'Birthday',
         participants: ['John', 'Ann']
       }
     };
 
-    expect(reducer(initialState, addAction)).toEqual({
+    const resultState = reducer(initialState, addAction);
+
+    expect(resultState).toEqual({
       events: [
-        addAction.payload
+        {
+          ...addAction.payload,
+          id: resultState.events[0].id
+        }
       ]
     });
   });

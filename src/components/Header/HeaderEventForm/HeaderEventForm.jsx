@@ -58,11 +58,21 @@ class HeaderEventForm extends Component {
         empty: false
       }, () => {
         const [ , day, month, year ] = patterns.date[0].exec(this.state.event.date);
+        const date = new Date(+year, +month - 1, +day);
+        const event = this.props.getEventForCurrentDate(date);
 
-        this.props.onAdd({
-          ...this.state.event,
-          date: new Date(+year, +month - 1, +day)
-        });
+        if (event) {
+          this.props.editEvent({
+            ...this.state.event,
+            id: event.id,
+            date: date
+          });
+        } else {
+          this.props.addEvent({
+            ...this.state.event,
+            date: date
+          });
+        }
       });
     }
   }
@@ -195,7 +205,9 @@ class HeaderEventForm extends Component {
 }
 
 HeaderEventForm.propTypes = {
-  onAdd: PropTypes.func.isRequired
+  addEvent: PropTypes.func.isRequired,
+  editEvent: PropTypes.func.isRequired,
+  getEventForCurrentDate: PropTypes.func.isRequired
 };
 
 export default HeaderEventForm;

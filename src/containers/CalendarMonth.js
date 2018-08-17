@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import CalendarMonth from '../components/CalendarMonth/CalendarMonth';
 import * as eventsActions from '../actions/events';
 
-const filterBooksByMonth = (events, date) => {
+const filterEventsByMonth = (events, date) => {
   return events.filter(event =>
     (event.date.getMonth() === date.getMonth()) &&
     (event.date.getFullYear() === date.getFullYear())
@@ -11,7 +11,7 @@ const filterBooksByMonth = (events, date) => {
 };
 
 const mapStateToProps = ({events, date}) => ({
-  events: filterBooksByMonth(events.events, date.date)
+  events: filterEventsByMonth(events.events, date.date)
 });
 
 const mapDispatchToProps = dispatch => ({

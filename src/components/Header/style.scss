@@ -17,6 +17,10 @@
   position: relative;
 }
 
+.header__search-wrapper {
+  position: relative;
+}
+
 .header__search-field {
   padding: 8px 12px;
   padding-left: 30px;
@@ -32,6 +36,27 @@
   height: 16px;
   width: 16px;
   fill: $french-grey;
+}
+
+.header__search-results {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 33px;
+  left: 0;
+  right: 0;
+  z-index: $popup-z-index;
+  background-color: $light-grey;
+  list-style: none;
+  box-shadow: 0px 2px 4px 0 rgba($shark, 0.12), 0px 2px 10px 0px rgba($shark, 0.15);
+}
+
+.header__search-result-item {
+  padding: 5px;
+}
+
+.header__search-result-item-text {
+  margin: 0;
 }
 
 .header__event-form-field {

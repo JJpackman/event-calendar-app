@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MonthToggler from '../components/MonthToggler/MonthToggler';
-import CalendarHeader from './CalendarHeader';
+import Header from '../components/Header/Header';
 import CalendarMonth from './CalendarMonth';
 import * as dateActions from '../actions/date';
 import { getDate } from '../selectors/selectors';
@@ -17,7 +17,7 @@ class App extends Component {
 
     return (
       <div>
-        <CalendarHeader />
+        <Header />
         <MonthToggler
           date={date}
           onNextMonth={moveToNextMonth}

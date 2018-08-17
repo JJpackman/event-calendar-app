@@ -55,6 +55,13 @@ class MonthItemEventForm extends Component {
     Object.keys(patterns).forEach(field => {
       this.validator.addRule(field, patterns[field]);
     });
+
+    if (this.props.existedEvent) {
+      Object.keys(this.state.event).forEach(prop => {
+        const value = this.state.event[prop];
+        value && this.validateField(prop, value);
+      });
+    }
   }
 
   handleSubmit(e) {
